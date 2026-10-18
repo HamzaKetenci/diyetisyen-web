@@ -5,11 +5,13 @@ import Link from 'next/link';
 import { CheckCircle2, AlertCircle, Calendar, RefreshCw } from 'lucide-react';
 import { appointmentFormSchema, type AppointmentFormData } from '@/lib/validations/appointment';
 import { submitAppointmentRequest } from '@/app/actions/appointment';
+import { useAdminStore } from '@/lib/store/admin-store';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/Button';
 
 export function AppointmentForm() {
+  const addAppointment = useAdminStore((state) => state.addAppointment);
   const [formData, setFormData] = useState<AppointmentFormData>({
     fullName: '',
     phone: '',
@@ -72,6 +74,12 @@ export function AppointmentForm() {
       const response = await submitAppointmentRequest(formData);
 
       if (response.success) {
+        addAppointment({
+          fullName: formData.fullName,
+          phone: formData.phone,
+          email: formData.email,
+          target: formData.target,
+        });
         setIsSuccess(true);
       } else {
         setGeneralError(response.message);

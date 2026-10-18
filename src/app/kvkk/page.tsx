@@ -54,8 +54,7 @@ export default function KvkkPage() {
                   ziyaret eden kullanıcılarımızın kişisel verilerinin güvenliğine ve gizliliğine azami önem göstermekteyiz.
                 </p>
                 <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200 text-xs space-y-1">
-                  <p><strong>Veri Sorumlusu Unvanı:</strong> [BİLGİ GEREKLİ — Şahıs/Klinik Unvanı]</p>
-                  <p><strong>Vergi Dairesi & No:</strong> [BİLGİ GEREKLİ]</p>
+                  <p><strong>Veri Sorumlusu Unvanı:</strong> Dyt. Ayşe Örnek Beslenme ve Diyet Danışmanlığı</p>
                   <p><strong>Adres:</strong> {siteConfig.address}</p>
                   <p><strong>E-posta:</strong> {siteConfig.email}</p>
                   <p><strong>Telefon:</strong> {siteConfig.phone}</p>

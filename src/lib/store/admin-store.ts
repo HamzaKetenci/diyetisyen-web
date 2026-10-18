@@ -25,6 +25,7 @@ interface AdminState {
 
   // Appointments
   appointments: AppointmentRequest[];
+  addAppointment: (appointment: Omit<AppointmentRequest, 'id' | 'createdAt' | 'status'>) => void;
   updateAppointmentStatus: (id: string, status: AppointmentStatus) => void;
   updateAppointmentNote: (id: string, note: string) => void;
   deleteAppointment: (id: string) => void;
@@ -70,6 +71,18 @@ export const useAdminStore = create<AdminState>()(
 
       // Appointments
       appointments: mockAppointmentRequests,
+      addAppointment: (newAppointment) =>
+        set((state) => ({
+          appointments: [
+            {
+              ...newAppointment,
+              id: `req-${Date.now()}`,
+              status: 'yeni',
+              createdAt: new Date().toISOString(),
+            },
+            ...state.appointments,
+          ],
+        })),
       updateAppointmentStatus: (id, status) =>
         set((state) => ({
           appointments: state.appointments.map((a) =>

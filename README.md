@@ -1,6 +1,8 @@
 # Uzman Diyetisyen Tanıtım ve Randevu Sitesi
 
-Kişiye özel beslenme danışmanlığı, online diyet ve randevu yönetimi için geliştirilmiş, yüksek performanslı, mobil öncelikli, erişilebilir ve modern bir web uygulaması.
+> **⚠️ Önemli Not:** Bu proje bir prototiptir. Veritabanı ve e-posta entegrasyonu bulunmamaktadır; randevu talepleri ve yönetim paneli verileri tarayıcı hafızasında (`localStorage`) saklanmaktadır. Canlıya almadan önce bir veritabanı (ör. Supabase) bağlanmalıdır.
+
+Kişiye özel beslenme danışmanlığı, online diyet ve randevu yönetimi için geliştirilmiş, mobil öncelikli ve modern bir web uygulaması prototipi.
 
 ---
 
@@ -15,44 +17,32 @@ Kişiye özel beslenme danışmanlığı, online diyet ve randevu yönetimi içi
 ## 🚀 Özellikler
 
 ### Public Web Sitesi
-- **Hero Bölümü**: Değer önerisi, kademeli giriş animasyonu (60–80ms gecikme), "Randevu Al" ve "Hizmetleri İncele" butonları.
-- **Hakkımda**: Diyetisyen profil kartı, biyografi metni, yaklaşım felsefesi ve [BİLGİ GEREKLİ] alanları.
-- **Hizmetler**: 6 adet uzmanlık alanı, Lucide ikonlar, özellik maddeleri ve `translateY(-4px)` CSS hover efekti.
-- **Danışmanlık Süreci**: 4 adımlı şeffaf süreç akışı (İlk Görüşme, Kişisel Plan, Uygulama & Takip, Hedef Değerlendirme).
-- **Blog & Tarifler**: Ana sayfada son yazılar önizlemesi, `/blog` listesi ve `react-markdown` + `remark-gfm` ile render edilen `/blog/[slug]` tekil yazı sayfaları.
-- **Danışan Yorumları**: Yalnızca yönetici tarafından onaylanan yorumlar gösterilir; onaylı yorum yoksa bölüm otomatik gizlenir.
-- **Sıkça Sorulan Sorular**: Tam erişilebilir, klavye uyumlu Akordeon (`aria-expanded`, `aria-controls`, `role="region"`).
+- **Hero Bölümü**: Değer önerisi, kademeli giriş animasyonu, "Randevu Al" ve "Hizmetleri İncele" butonları.
+- **Hakkımda**: Diyetisyen profil kartı, biyografi metni ve yaklaşım felsefesi.
+- **Hizmetler**: 6 adet uzmanlık alanı, ikonlar, özellik maddeleri ve hover efektleri.
+- **Danışmanlık Süreci**: 4 adımlı süreç akışı (İlk Görüşme, Kişisel Plan, Uygulama & Takip, Hedef Değerlendirme).
+- **Blog & Tarifler**: Ana sayfada son yazılar önizlemesi, `/blog` listesi ve Markdown ile render edilen `/blog/[slug]` tekil yazı sayfaları.
+- **Danışan Yorumları**: Onaylanan yorumların listelendiği dinamik alan.
+- **Sıkça Sorulan Sorular**: Erişilebilir, klavye uyumlu akordeon bileşeni.
 - **Randevu & İletişim Formu**:
-  - Çift katmanlı Zod doğrulaması (istemci + Server Action).
-  - Türkiye telefon formatı regex kontrolü.
-  - Honeypot (`website_url`) ile görünmez bot koruması.
+  - İstemci ve sunucu (Server Action) doğrulaması.
+  - Türkiye telefon formatı kontrolü.
+  - Honeypot ile temel bot koruması.
   - Zorunlu KVKK onayı.
-  - Yapay 600ms gecikme ve başarı durum ekranı.
-  - **Gizlilik**: Hiçbir kişisel veri loglanmaz (`console.log` dahi bulunmaz).
-- **KVKK Aydınlatma Metni**: `/kvkk` sayfasında standart bilgilendirme metni.
-- **SEO & Performans**:
-  - `Physician` ve `Dietetics` JSON-LD yapılandırılmış veri şeması.
-  - Dinamik `sitemap.xml` ve `robots.txt` (admin yolları disallow).
-  - Sayfa geçişlerinde basit ve performanslı CSS fade-in (`template.tsx`).
-  - `prefers-reduced-motion` tercihlerine tam uyum.
-  - Kontrast kuralı: Altın (`#D4A853`) asla metin rengi olarak kullanılmamıştır; altın zeminlerde koyu metin (`neutral-900`) garantilenmiştir.
+  - Gönderilen talepler tarayıcı store'u üzerinden anında `/admin` paneline yansıtılır.
+- **KVKK Aydınlatma Metni**: `/kvkk` sayfasında bilgilendirme metni.
+- **SEO & İndeksleme**: Prototip ve test aşamasında arama motoru dizinlerine düşmemesi için tüm site `noindex` olarak yapılandırılmıştır.
 
 ### Yönetim Paneli (`/admin`)
-- **noindex**: Arama motoru dizinlerine kesinlikle kapatılmıştır.
-- **Demo Giriş Ekranı**: Gerçekçi tasarım, şifre göster/gizle, herhangi bir sahte banner içermeyen profesyonel arayüz.
+- **Demo Giriş Ekranı**: Panel yapısını test etmeye uygun sade arayüz.
 - **İstemci Store (Zustand + `localStorage`)**:
-  - Sayfa yenilense dahi durumlar, notlar ve içerikler tarayıcıda kalır.
+  - Test sırasında eklenen durumlar, notlar ve yeni form başvuruları tarayıcıda saklanır.
 - **Randevu Talepleri Yönetimi**:
   - Durum sekmeleri (`Tümü`, `Yeni`, `Arandı`, `Randevu Verildi`, `İptal`) ve sayaçlar.
-  - Canlı arama kutusu (isim, telefon, e-posta, hedef).
-  - Durum güncelleme ve not ekleme/düzenleme modalı.
-  - Yanlışlıkla silinmeyi önleyen silme onay modalı.
-  - Boş durum (empty state) tasarımı.
+  - Arama kutusu (isim, telefon, e-posta, hedef).
+  - Durum güncelleme ve not düzenleme modalı.
 - **İçerik Yönetimi**:
-  - Hizmetler: Ekle, düzenle, yayından kaldır, sil.
-  - SSS: Ekle, düzenle, sırala, yayından kaldır, sil.
-  - Danışan Yorumları: Tek tıkla onaylama/onayı kaldırma, ekle, sil.
-  - Blog & Tarifler: Sekmeli Markdown editör + anlık canlı önizleme, Türkçe karakter uyumlu otomatik slug üretimi.
+  - Hizmetler, SSS, Danışan Yorumları ve Blog yazıları için listeleme, düzenleme ve ekleme arayüzü.
 
 ---
 
@@ -116,8 +106,8 @@ npm run start
 
 ## 🗄️ Supabase'e Geçiş Kılavuzu (Adım Adım)
 
-Bu prototip, tüm veri erişim işlemlerini tek bir katmanın arkasında toplar: [`src/lib/data/index.ts`](file:///src/lib/data/index.ts).
-Gerçek bir veritabanına geçmek, arayüz bileşenlerini değiştirmeyi **gerektirmez**; sadece bu dosyanın içindeki mock fonksiyonlarını Supabase istemcisiyle değiştirmek yeterlidir.
+Bu prototip, tüm veri erişim işlemlerini tek bir katmanın arkasında toplar: `src/lib/data/index.ts`.
+Gerçek bir veritabanına geçmek, arayüz bileşenlerini değiştirmeyi gerektirmez; sadece bu dosyanın içindeki mock fonksiyonlarını Supabase istemcisiyle değiştirmek yeterlidir.
 
 ### 1. Supabase Projesi Oluşturma
 - [supabase.com](https://supabase.com) adresinden yeni bir proje oluşturun.

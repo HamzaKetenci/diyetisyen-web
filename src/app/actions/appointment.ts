@@ -1,6 +1,7 @@
 'use server';
 
 import { appointmentFormSchema, type AppointmentFormData } from '@/lib/validations/appointment';
+import { createAppointmentRequest } from '@/lib/data';
 
 export interface ActionResponse {
   success: boolean;
@@ -31,11 +32,16 @@ export async function submitAppointmentRequest(
     };
   }
 
-  // Simulate network latency (600ms)
-  await new Promise((resolve) => setTimeout(resolve, 600));
+  // Call Data Access Layer (DAL) to register the appointment request
+  await createAppointmentRequest({
+    fullName: data.fullName,
+    phone: data.phone,
+    email: data.email,
+    target: data.target,
+  });
 
   // NOTE: STRICT PRIVACY RULE: Never log personal data (no console.log)
-  // TODO: gerçek kayıt + bildirim (Supabase & Resend/E-posta entegrasyonu)
+  // TODO: gerçek kalıcı veritabanı + e-posta entegrasyonu (Supabase & Resend)
 
   return {
     success: true,

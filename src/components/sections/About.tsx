@@ -87,7 +87,7 @@ export function About() {
                 <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200/60 flex items-start gap-3">
                   <BookOpen className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-sm font-semibold text-neutral-900">Eğitim [BİLGİ GEREKLİ]</h4>
+                    <h4 className="text-sm font-semibold text-neutral-900">Lisans & Uzmanlık</h4>
                     <p className="text-xs text-neutral-700 mt-1">
                       Beslenme ve Diyetetik Lisans & Sürekli Eğitim
                     </p>
@@ -107,9 +107,9 @@ export function About() {
                 <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200/60 flex items-start gap-3">
                   <Award className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-sm font-semibold text-neutral-900">Sertifikalar [BİLGİ GEREKLİ]</h4>
+                    <h4 className="text-sm font-semibold text-neutral-900">Mesleki Gelişim</h4>
                     <p className="text-xs text-neutral-700 mt-1">
-                      Mesleki gelişim programları ve seminerler
+                      Güncel klinik yaklaşımlar ve bilimsel seminerler
                     </p>
                   </div>
                 </div>
