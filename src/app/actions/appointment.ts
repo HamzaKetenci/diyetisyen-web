@@ -38,6 +38,7 @@ export async function submitAppointmentRequest(
     phone: data.phone,
     email: data.email,
     target: data.target,
+    kvkkConsent: data.kvkkConsent,
   });
 
   // NOTE: STRICT PRIVACY RULE: Never log personal data (no console.log)

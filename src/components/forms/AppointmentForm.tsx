@@ -79,6 +79,7 @@ export function AppointmentForm() {
           phone: formData.phone,
           email: formData.email,
           target: formData.target,
+          kvkkConsent: formData.kvkkConsent,
         });
         setIsSuccess(true);
       } else {
